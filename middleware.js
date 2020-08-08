@@ -55,5 +55,20 @@ module.exports = {
         res.status(403).json({ you: 'You have no power here' });
       }
     }
+  },
+
+  generateToken: function(user) {
+    const payload = {
+      subject: user.id,
+      username: user.username,
+      department: user.department
+    };
+
+    const options = {
+      expiresIn: "2h"
+    };
+
+    return jwt.sign(payload, secrets.jwtSecret, options);
+
   }
 }
