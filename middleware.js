@@ -4,7 +4,7 @@ const secrets = require('./config/secrets.js');
 
 module.exports = {
   validateUserId: function (req, res, next) {
-    Users.findbyId(req.params.id)
+    Users.findById(req.params.id)
     .then(user => {
       if(user) {
         req.user = user;
